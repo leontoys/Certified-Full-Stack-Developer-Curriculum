@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Agency Page</title>
+  </head>
+  <body>
+    <h1>Kerala, God's Own Country</h1>
+    <p>Kerala, located on the south-western tip of India, enjoys unique geographical features that have made it one of the most sought-after tourist destinations in Asia. Fondly referred to as ‘God’s Own Country’, Kerala was selected by the National Geographic Traveller as one of the 50 destinations of a lifetime and one of the thirteen paradises in the world.</p>
+    <h2>Packages</h2>
+    <p>The Department of Tourism, Government of Kerala, offers the details of accredited service providers in the state through this section. Travellers can get information about accommodation facilities (hotels, resorts, homestays & heritage buildings), Ayurveda centres and tour operators in Kerala.</p>
+    <ul>
+      <li><a href="https://www.freecodecamp.org/learn" target="_blank">Group Travels</a></li>
+      <li><a href="https://www.freecodecamp.org/learn" target="_blank">Private Tours</a></li>
+    </ul>
+    <h2>Top Itineraries</h2>
+    <figure><a href="https://www.freecodecamp.org/learn" target="_blank"><img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Fmobile%2Fmunnar-mesmerisingly-yours-1715778818_f76bdf427724e34da86d.webp&w=640&q=75" alt="greenery"></a><figcaption/></figure>
+    <figure><a href="https://www.freecodecamp.org/learn" target="_blank"><img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Fmobile%2Fwayanad-the-la-la-land-of-adventure-1715780365_bafdb617470d78f56364.webp&w=640&q=75" alt="adventures"></a><figcaption/></figure>
+    <figure><a href="https://www.freecodecamp.org/learn" target="_blank"><img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Fmobile%2Flands-of-majestic-treats-1715780150_f7b497e7c55fa1d967e6.webp&w=640&q=75" alt="beach"></a><figcaption/></figure>
+  </body>
+</html>
