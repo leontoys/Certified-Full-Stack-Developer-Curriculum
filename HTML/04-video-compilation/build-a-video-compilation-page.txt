@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Video Compilation Page</title>
+</head>
+
+<body>
+    <main>
+        <h1>SAP Developer Resources</h1>
+        <p>Code samples, developer showcases, and newsletters to help you get started developing.</p>
+    <section>
+        <h2>CAP</h2>
+        <p>Build cloud-native applications with maximized productivity at minimized costs, and proven best practices served out of the box.</p>
+    <iframe src="https://www.youtube.com/embed/gu5r1EWSDSU?feature=shared" height="300" width="500" title="cap video">
+    </iframe>
+    </section>
+    <section>
+        <h2>RAP</h2>
+        <p>The ABAP RESTful Application Programming Model (RAP) allows developers to efficiently build cloud-ready, transactional business apps, services, and extensions on SAP BTP ABAP Environment, SAP S/4HANA Cloud Public Edition, SAP S/4HANA Cloud Private Edition, and SAP S/4HANA 1909 and higher. It is at the heart of the ABAP Cloud development model for transactional development scenarios. </p>
+   <iframe src="https://youtube.com/embed/i0A9iZ_46fI?feature=shared" height="300" width="500" title="rap video">
+    </iframe>
+    </section>
+    <section>
+        <h2>UI5</h2>
+        <p>Discover New Enterprise Grade Horizons</p>
+   <iframe src="https://youtube.com/embed/jp2-9O4K094?feature=shared" height="300" width="500" title="ui5 video">
+    </iframe>
+    </section>
+    </main>
+</body>
+
+</html>
