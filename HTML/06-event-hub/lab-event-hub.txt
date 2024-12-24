@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Event Hub</title>
+</head>
+
+<body>
+    <header>
+    <h1>Event Hub</h1>
+    <nav>
+        <ul>
+            <li><a href="#upcoming-events">Upcoming Events</a></li>
+            <li><a href="#past-events">Past Events</a></li>
+        <ul>
+    </nav>
+    </header>
+    <main>
+        <section id="upcoming-events">
+            <h2>Upcoming Events</h2>
+            <article>
+                <h3>Thaipooyam Mahotsavam, Koorkancherry</h3>
+                <p>The Thaipooyam Mahotsavam Festival, celebrated at the Koorkancherry Sree Maheswara Temple in Thrissur, is a vibrant and energetic event dedicated to Lord Subrahmanya, the son of Lord Shiva. Held in January or February, the festival is renowned for its spirited Kavadiyattom performances, which are characterized by colorful, decorated arches called kavadis carried on the shoulders of devotees.</p>
+            </article>
+            <article>
+                <h3>Kodungalloor Bharani</h3>
+                <p>The annual festival at the Sree Kurumba Bhagavathy Temple in Kodungalloor, Thrissur district, known as the Kodungalloor Bharani, is one of Kerala's most famous and intense celebrations. Occurring during the Malayalam month of Meenam (March-April), this event is deeply rooted in tradition and ritual, drawing devotees and visitors from across the state.</p>
+            </article>
+        </section>
+        <section id="past-events">
+            <h2>Past Events</h2>
+            <article>
+                <h3>Chinakkathoor Pooram</h3>
+                <p>The Sree Chinakkathoor Bhagavathi Temple in Palappuram, near Ottapalam in Palakkad district, hosts one of Kerala’s most vibrant and unique temple festivals, the Chinakkathoor Pooram. Celebrated annually on the Makam asterism in the Malayalam month of Kumbham (February/March), this festival draws crowds from near and far to witness its grand spectacles and rich cultural performances.</p>
+                <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Flarge-desktop%2Fchinakkathoor-pooram-1727677850_82609a210ab33b5dfb0c.webp&w=1920&q=75" alt="chinakkathoor pooram procession photo">
+            </article>
+            <article>
+                <h3>Thrissur Pooram</h3>
+                <p>Thrissur Pooram, held at Thekkinkadu Maidanam in the heart of Thrissur district, is a resplendent festival celebrated with grandeur, blending the spiritual and cultural essence of Kerala. Celebrated in the Malayalam month of Medam (April-May), this annual temple festival is widely regarded as the "Mother of all Poorams." The brainchild of Shakthan Thampuran, the Maharaja of Kochi, Thrissur Pooram brings together ten temples in a magnificent spectacle that captivates thousands of visitors each year.</p>
+                <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Flarge-desktop%2Fcaparisoned-elephants-and-energetic-crowd-at-thrissur-pooram-celebrations-1728570496_5b57e06588032282095e.webp&w=1920&q=75" alt="elephants standing in line for thrissur pooram">
+        </section>
+    </main>
+</body>
+
+</html>
