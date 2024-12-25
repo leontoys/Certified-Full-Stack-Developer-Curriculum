@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <h1 id="title">Restaurant Survey Form</h1>
+    <p id="description">Thank you for taking time to rate our service.</p>
+    <form id="survey-form">
+      <label id="name-label" for="name">Name:(required)</label>
+      <input id="name" required placeholder="Ex. John Doe"></input>
+      <label id="email-label" for="email" >Email:(required)</label>
+      <input id="email" placeholder="Ex. john.doe@gmail.com" type="email" required></input>
+      <label id="number-label" for="number">Age:</label>
+      <input id="number" type="number" min="10" max="99" placeholder="Ex. 35"/>
+      <label for="dropdown">How do you rate the service?</label>
+      <select id="dropdown">
+          <option value="excellent">Excellent</option>
+          <option value="average">Average</option>
+          <option value="poor">Poor</option>
+        </select>
+        <label>Would you recommend this restaurant to a friend?</label>
+        <input type="radio" name="recommend" value="yes">Yes</input>
+        <input type="radio" name="recommend" value="maybe">Maybe</input>
+        <input type="radio" name="recommend" value="no">No</input>
+        <label>Select everything you liked</label>
+        <input type="checkbox" value="food">Food</checkbox>
+        <input type="checkbox" value="price">Price</checkbox>
+        <input type="checkbox" value="service">Service</checkbox>
+    <label for="feedback">Any additional feedback?</label>
+    <textarea id="feedback"></textarea>
+    <button id="submit" type="submit">Submit</button>        
+    </form>
+  </body>
+</html>
