@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Catalog</title>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Publication Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Naalukettu</td>
+        <td>MT Vasudevan Nair</td>
+        <td>Novel</td>
+        <td>1960</td>
+      </tr>
+      <tr>
+        <td>Dharma puranam</td>
+        <td>OV Vijayan</td>
+        <td>Novel</td>
+        <td>1975</td>
+      </tr>
+      <tr>
+        <td>Sooryavamsam</td>
+        <td>Maythil Radhakrishnan</td>
+        <td>Novel</td>
+        <td>1970</td>
+      </tr>
+      <tr>
+        <td>Higuitta</td>
+        <td>NS Madhavan</td>
+        <td>Short stories</td>
+        <td>1990</td>
+      </tr>
+      <tr>
+        <td>Chullikkadinte Kavithakal</td>
+        <td>Balachandran Chullikkadu</td>
+        <td>Poems</td>
+        <td>1994</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <td colspan="4">Total Books: 5</td>
+    </tfoot>
+  </table>
+</body>
+
+</html>
