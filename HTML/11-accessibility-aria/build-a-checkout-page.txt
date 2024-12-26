@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Checkout Page</title>
+</head>
+
+<body>
+    <h1>Checkout</h1>
+    <section>
+        <h2 tabindex="0">Your Cart</h2>
+        <img src="https://cdn.freecodecamp.org/curriculum/labs/cube.jpg" alt="a rubik's cube">
+    </section>
+    <section>
+        <h2 tabindex="1">Payment Information</h2>
+        <form>
+            <label id="labelName" for="card-name">Name</label>
+            <input id="card-name" name="card-name" required aria-required="true" aria-labelledby="labelName"/>
+            <label id="labelNumber" for="card-number">Number</label>
+            <input id="card-number" name="card-number" required aria-required="true" arialabelledby="labelNumber"/>
+        </form>
+    </section>
+</body>
+
+</html>
