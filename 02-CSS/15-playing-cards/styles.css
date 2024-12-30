@@ -1,0 +1,39 @@
+#playing-cards{
+    display : flex;  justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  
+  .card{
+    border : 2px solid black;
+    width : 200px;
+    height : 400px;
+    border-radius : 10px; 
+    display:flex; justify-content:space-between;
+    padding : 20px; 
+  box-shadow: 10px 5px 5px gray;  
+  }
+  
+  .left{
+   transform:scale(2); 
+   align-self:flex-start;
+  }
+  
+  .middle{
+    align-self:center;
+  transform:scale(5);
+  flex-direction:column;
+  }
+  
+  .right{
+    align-self:flex-end;
+    transform:rotate(180deg) scale(2);
+  }
+  
+  #card-diamonds{
+    color : red;
+  }
+  
+  #card-hearts{
+    color : red;
+  }
