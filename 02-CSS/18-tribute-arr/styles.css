@@ -1,0 +1,23 @@
+#image{
+    max-width:100%;
+    height : auto;
+    display : block;
+    margin: auto;
+  }
+  
+  #main{
+    background-color : lightgray;
+    text-align : center;  
+  }
+  
+  #tribute-info{
+    margin : 50px;
+    padding : 50px;
+    text-align : left;
+  }
+  
+  blockquote{  
+    font-style:italic;
+    text-align : center;
+  }
+  
