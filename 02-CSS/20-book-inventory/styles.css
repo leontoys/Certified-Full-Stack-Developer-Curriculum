@@ -1,0 +1,31 @@
+.read{
+background-image: linear-gradient(lightgreen, green);
+}
+
+.to-read{
+    background-image: linear-gradient(orange,red);
+}
+
+.in-progress{
+    background-image: linear-gradient(lightyellow,yellow);
+
+}
+
+span{
+    display:inline-block;
+}
+
+tr[class="read"] span[class="status"]{
+    border : 1px;
+    background-image: linear-gradient(lightgreen,green);    
+}
+
+tr[class="to-read"] span[class="status"]{
+    border : 1px;
+    background-image: linear-gradient(orange,red);    
+}
+
+tr[class="in-progress"] span[class="status"]{
+    border : 1px;
+    background-image: linear-gradient(lightyellow,yellow);    
+}
