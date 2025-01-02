@@ -1,12 +1,12 @@
-.read{
+tr[class="read"]{
 background-image: linear-gradient(lightgreen, green);
 }
 
-.to-read{
+tr[class="to-read"]{
     background-image: linear-gradient(orange,red);
 }
 
-.in-progress{
+tr[class="in-progress"]{
     background-image: linear-gradient(lightyellow,yellow);
 
 }
@@ -28,4 +28,31 @@ tr[class="to-read"] span[class="status"]{
 tr[class="in-progress"] span[class="status"]{
     border : 1px;
     background-image: linear-gradient(lightyellow,yellow);    
+}
+
+span[class="status"],span[class^="rate"]{
+    height : auto;
+    width : auto;
+    padding : 1px;
+}
+
+span[class^="rate"]>span{
+    border : 1px;
+    border-radius : 5px;
+    margin : auto;
+    height : auto;
+    width : auto;
+    background-color : gray;
+}
+
+span[class*="one"]:nth-child(-n + 1){
+    background-image : linear-gradient(white,black);
+}
+
+span[class*="two"]:nth-child(-n + 2){
+    background-image : linear-gradient(white,black);
+}
+
+span[class*="three"]:nth-child(-n + 3){
+    background-image : linear-gradient(white,black);
 }
