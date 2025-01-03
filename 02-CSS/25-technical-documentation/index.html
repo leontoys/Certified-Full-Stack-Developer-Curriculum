@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Technical Documentation Page</title>
+  </head>
+
+  <body>
+    <nav id="navbar">
+        <header>Web Development</header>
+        <ul>
+            <li><a class="nav-link" href="#html">HTML</a></li>
+            <li><a class="nav-link" href="#css">CSS</a></li>
+            <li><a class="nav-link" href="#javascript">JavaScript</a></li>
+            <li><a class="nav-link" href="#mongodb">MongoDB</a></li>
+            <li><a class="nav-link" href="#express">Express</a></li>
+            <li><a class="nav-link" href="#react">React</a></li>
+            <li><a class="nav-link" href="#node">Node</a></li>
+    </nav>
+    <main id="main-doc">
+        <section id="html" class="main-section">
+            <header>HTML</header>
+            <p>Hypertext Markup Language (HTML) is the standard markup language[a] for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript, a programming language.</p>
+            <p>Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for its appearance. 
+            </p>
+            <code>
+                <pre>
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html&gt;
+                    &lt;head&gt;
+                    &lt;title&gt;Page Title&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+
+                    &lt;h1&gt;This is a Heading&lt;/h1&gt;
+                    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+
+                    &lt;/body&gt;
+                    &lt;/html&gt;
+                </pre>
+            </code>
+            <code>
+                <pre>
+                    &lt;div class="container"&gt;
+                        &lt;div class="box"&gt;
+                            &lt;h2&gt;Box 1&lt;/h2&gt;
+                            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div class="box"&gt;
+                            &lt;h2&gt;Box 2&lt;/h2&gt;
+                            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div class="box"&gt;
+                            &lt;h2&gt;Box 3&lt;/h2&gt;
+                            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                </pre>
+            </code>
+            <p>
+                WYSIWYG editors remain a controversial topic because of their perceived flaws such as:
+            <ul>   
+                <li>Relying mainly on the layout as opposed to meaning, often using markup that does not convey the intended meaning but simply copies the layout.</li>
+                <li>Often producing extremely verbose and redundant code that fails to make use of the cascading nature of HTML and CSS.</li>
+                <li>Often producing ungrammatical markup, called tag soup or semantically incorrect markup (such as for italics).</li>
+                <li>As a great deal of the information in HTML documents is not in the layout, the model has been criticized for its "what you see is all you get"-nature.</li>
+                <li>Many WYSIWYG editors are criticized for producing code that is difficult for humans to read.</li>
+            </ul>
+            </p>
+        </section>
+        <section id="css" class="main-section">
+            <header>CSS</header>
+            <p>Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.</p>
+            <p>CSS is designed to enable the separation of presentation and content, including layout, colors, and fonts. This separation improves content accessibility and provides more flexibility and control in the specification of presentation characteristics, enabling multiple web pages to share formatting by specifying the relevant CSS in a separate .css file, and reducing complexity and repetition in the structural content.</p>
+            <code>
+                <pre>
+                    body {
+                        background-color: lightblue;
+                    }
+
+                    h1 {
+                        color: white;
+                        text-align: center;
+                    }
+
+                    p {
+                        font-family: verdana;
+                        font-size: 20px;
+                    }
+                </pre>
+            </code>
+            <code>
+                <pre>
+                    .container {
+                        width: 100%;
+                        margin: 0 auto;
+                        overflow: hidden;
+                    }
+
+                    .box {
+                        float: left;
+                        width: 33.33%;
+                        padding: 50px;
+                        text-align: center;
+                    }
+                </pre>
+
+            </code>
+        </section>
+        <section id="javascript" class="main-section">
+            <header>JavaScript</header>
+            <p>JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. It has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions.</p>
+            <li>Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web.</li> <li>Over 97% of websites use it client-side for web page behavior, often incorporating third-party libraries. All major web browsers have a dedicated JavaScript engine to execute it.</li>
+            <code>
+                <pre>
+                    document.getElementById("demo").innerHTML = "Hello JavaScript";
+                </pre>
+            </code>
+            <code>
+                <pre>
+                    var x = 5;
+                    var y = 6;
+                    var z = x + y;
+                </pre>
+            </code>
+        </section>
+        <section id="mongodb" class="main-section">
+            <header>MongoDB</header>
+            <p>MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. and licensed under the Server Side Public License (SSPL).</p>
+            <p>Supporting field, range query, and regular-expression searches, MongoDB queries can return specific fields of documents and also include user-defined JavaScript functions. Queries can also be configured to return a random sample of results of a given size.</p>
+             
+        </section>
+        <section id="express" class="main-section">
+            <header>Express</header>
+            <p>Express.js, or simply Express, is a back end web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs. It has been called the de facto standard server framework for Node.js.</p>
+            <p>The original author, TJ Holowaychuk, described it as a Sinatra-inspired server, meaning that it is relatively minimal with many features available as plugins. Express is the back end component of the MEAN stack, together with MongoDB database and AngularJS frontend framework.</p>
+             
+        </section>
+        <section id="react" class="main-section">
+            <header>React</header>
+            <p>React (also known as React.js or ReactJS) is an open-source front-end JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies.</p>
+            <p>React can be used as a base in the development of single-page or mobile applications. Complex React applications usually require the use of additional libraries for state management, routing, and interaction with an API.</p>
+             
+        </section>
+        <section id="node" class="main-section">
+            <header>Node</header>
+            <p>Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command-line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser.</p>
+            <p>Consequently, Node.js represents a "JavaScript everywhere" paradigm, unifying web application development around a single programming language, rather than different languages for server- and client-side scripts.</p>
+             
+        </section>               
+    </main>
+  </body>
+</html>
