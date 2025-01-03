@@ -17,14 +17,15 @@
 }
 
 #roof{
-    background-color: transparent;
+    border: 5px solid lightgreen;
+    background-color: green;
     top: 0;
-    height:0;
+    height:100px;
     width:600px;
     left:-50px;
-    border-left:25px solid transparent;
+/*     border-left:25px solid transparent;
     border-right:25px solid transparent;
-    border-bottom: 125px solid blue;
+    border-bottom: 125px solid blue; */
 }
 
 #chimney{
