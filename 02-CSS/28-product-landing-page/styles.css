@@ -2,11 +2,15 @@
 #nav-bar{
     position: fixed;
     top:0;
-    bottom: 0;
     display: flex;
     width: 100%;
     justify-content: space-around;
     align-items: start;
+    background-color: aliceblue;
+}
+
+img{
+    position: fixed;
 }
 
 #nav-bar a {
@@ -14,6 +18,7 @@
 }
 
 h1{
+    margin : 10%;
     text-align: center;
 }
 
