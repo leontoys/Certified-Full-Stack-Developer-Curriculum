@@ -1,0 +1,118 @@
+*{
+    box-sizing:  -box;
+    margin : 0;
+    padding: 0;
+       
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(gray,darkgray);
+}
+
+#navbar-section{
+
+}
+
+#navbar{
+    position: fixed;
+    top : 0;
+    height: 10%;
+    width: 100%; 
+    background : linear-gradient(90deg,lightblue,blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#navbar a{
+    text-decoration : none;
+    color : white;
+        
+}
+
+#welcome-section{
+}
+
+#welcome-text{
+    height: 100vh;
+    text-align: center;
+    padding: 20%;
+    background: linear-gradient(gray,darkgray);
+}
+
+#welcome-text h1{
+    font-size: 5rem;     
+    color : white;
+}
+
+#welcome-text p{
+    color : blue;
+    font-size: 2.5rem;       
+    font-style: italic;
+}
+
+#projects{
+    height: 100vh;
+    background : linear-gradient(90deg, gray, darkgrey);
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+
+
+.project-tile{
+    height: 250px;
+    width: 300px;
+    margin : auto;
+}
+
+.project-tile figcaption{
+    text-align: center;}
+
+.project-tile a{
+    text-decoration: none;
+    color : white;
+}    
+
+#profile{
+    height: 100vh;
+    background : linear-gradient(90deg, gray, darkgrey);
+}
+
+#profile-content{
+    text-align: center;
+    padding: 20%;
+       
+}
+
+#profile-content h1{
+    font-size: 4rem;       
+    color : white;
+    padding : 1%;
+    margin : 1%;
+}
+
+#profile-content p{
+    font-size: 1.5rem;       
+    color : blue;
+    font-style: italic;
+    padding : 1%;
+    margin : 1%;
+}
+
+#profile-content a{
+    text-decoration  : none;        
+    color : white;
+    padding: 1%;
+    margin : 1%;
+    font-size: 2rem;
+}
+
+
+
+ @media screen and (max-width:768px) {
+    *{
+        height: auto;
+    }
+}
