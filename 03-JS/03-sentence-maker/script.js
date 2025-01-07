@@ -1,0 +1,17 @@
+let adjective = "good";
+let noun = "boy";
+let verb = "programming";
+let place = "UK";
+let adjective2 = "perfect";
+let noun2 = "cookies";
+const firstStory = "Once upon a time, there was a(n) "+adjective+" "+noun+" who loved to eat "+noun2+". The "+noun+" lived in a "+place+" and had "+adjective2+" nostrils that blew fire when it was "+verb+".";
+console.log("First story: "+firstStory);
+let secondStory;
+adjective = "bad";
+noun = "monkey";
+verb = "screaming";
+place = "US";
+adjective2 = "ugly";
+noun2 = "bananans";
+secondStory = "Once upon a time, there was a(n) "+adjective+" "+noun+" who loved to eat "+noun2+". The "+noun+" lived in a "+place+" and had "+adjective2+" nostrils that blew fire when it was "+verb+".";
+console.log("Second story: "+secondStory);
