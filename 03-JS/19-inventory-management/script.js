@@ -29,7 +29,10 @@ const removeProduct = (name,quantity)=>{
   if(index == -1){
     console.log(`${name} not found`);
   }
-  else{
+  else if(inventory[index].quantity < quantity){
+    console.log(`Not enough ${name} available, remaining pieces: ${inventory[index].quantity}`);
+  }
+  else {
     inventory[index].quantity -= quantity;
     if(inventory[index].quantity == 0){
       inventory.splice(index,1);
