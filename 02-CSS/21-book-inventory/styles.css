@@ -51,7 +51,7 @@ span[class~="one"] :nth-child(1) {
   background-image: linear-gradient(lightblue,blue);
 }
 
-span[class~="two"]:nth-child(1):nth-child(2) {
+span[class~="two"] :nth-child(-n + 2) {
   background-image: linear-gradient(lightblue,blue);
 }
 
