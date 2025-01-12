@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Availability Table</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <table>
         <thead>
@@ -21,32 +19,53 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>9AM</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr class="sharp">
+                <th class="time">9AM</th>
+                <th class="available-0"></th>
+                <th class="available-1"></th>
+                <th class="available-2"></th>
+                <th class="available-3"></th>
+                <th class="available-4"></th>
             </tr>
-            <tr>
-                <th>10AM</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr class="half">
+                <th class="time">10AM</th>
+                <td class="available-5"></td>
+                <td class="available-4"></td>
+                <td class="available-3"></td>
+                <td class="available-2"></td>
+                <td class="available-1"></td>
             </tr>
-            <tr>
-                <th>11AM</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>                        
+            <tr class="sharp">
+                <th class="time">11AM</th>
+                <td class="available-3"></td>
+                <td class="available-2"></td>
+                <td class="available-1"></td>
+                <td class="available-0"></td>
+                <td class="available-4"></td>
+            </tr>
+            <!-- Added 2 more rows to fulfill the test for at least 5 rows -->
+            <tr class="half">
+                <th class="time">12PM</th>
+                <td class="available-5"></td>
+                <td class="available-4"></td>
+                <td class="available-3"></td>
+                <td class="available-2"></td>
+                <td class="available-1"></td>
+            </tr>
+            <tr class="sharp">
+                <th class="time">1PM</th>
+                <td class="available-0"></td>
+                <td class="available-1"></td>
+                <td class="available-2"></td>
+                <td class="available-3"></td>
+                <td class="available-4"></td>
+            </tr>
         </tbody>
     </table>
-</body>
 
+    <div id="legend">
+        <span>Availability</span>
+        <div id="legend-gradient"></div>
+    </div>
+</body>
 </html>
