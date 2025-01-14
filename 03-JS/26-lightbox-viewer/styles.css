@@ -35,3 +35,7 @@ h1{
   text-align: center;
   background-color: skyblue;
 }
+
+#close{
+  font-size: 2rem;
+}
