@@ -1,0 +1,25 @@
+*{
+    padding : 0;
+    margin : 0;
+    box-sizing: border-box;
+}
+
+div{
+    position: fixed;
+    margin: 10%;
+    padding : 10%;
+    background-color: aliceblue;
+}
+
+h1{
+    text-align: center;
+}
+
+textarea{
+    padding : 1%;
+    margin : 1%;
+}
+
+p{
+
+}
