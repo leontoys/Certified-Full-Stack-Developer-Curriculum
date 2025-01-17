@@ -18,16 +18,25 @@ const getFlags = ()=>{
 
 const testRegex = (event)=>{
 console.log("\n---testing---")
-console.log(stringToTest.textContent)
-console.log(pattern)
+const flags = getFlags();
+const regexp = new RegExp(regexPattern.value, flags);
+console.log(regexp)
 const str = stringToTest.textContent;
-const pattern = `/${regexPattern.value}/${getFlags()}`
-const matches = [...str.matchAll(pattern)]; // Extracting matches
-if(matches[0]){
-  console.log(matches[0]); 
-    /*for (const match of matches[0]) {
-        console.log(match[0]); 
-    }*/
+console.log(str)
+let matches = null;
+if(flags.includes("g")){
+  matches = str.matchAll(regexp);
+}else{
+  matches = str.match(regexp);
+}
+if(matches){
+  testResult.innerText = ""
+    console.log(matches)
+      for(const match of matches){
+        testResult.innerText += `${match[0]}, `
+        console.log(match)
+      }
+      testResult.innerText = testResult.innerText.slice(0,-1)
 }
 else{
   testResult.innerText = "no match"
