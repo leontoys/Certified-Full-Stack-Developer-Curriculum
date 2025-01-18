@@ -12,6 +12,12 @@ const orderNo = document.getElementById("order-no");
 const productCode = document.getElementById("product-code");
 //quantity
 const quantity = document.getElementById("quantity")
+//complaints group
+const complaintsGroup = document.getElementById("complaints-group")
+//complain description
+const complaintDescription = document.getElementById("complaint-description")
+//other check box
+const otherCompliant = document.getElementById("other-complaint")
 
 /*-----------------
 add event listeners
@@ -31,6 +37,10 @@ orderNo.addEventListener("change",validateOrderNo)
 productCode.addEventListener("change",validateProductCode)
 //quantity
 quantity.addEventListener("change",validateQuantity)
+//complaints
+complaintsGroup.addEventListener("change",validateComplaintsGroup)
+//complaint description
+complaintDescription.addEventListener("change",validateComplaintDescription)
 
 /*-------------------
 function definitions
@@ -43,6 +53,8 @@ function validateForm() {
   result["order-no"] = validateOrderNo()
   result["product-code"] = validateProductCode();
   result["quantity"] = validateQuantity();
+  result["complaints-group"] = validateComplaintsGroup();
+  result["complaint-description"] = validateComplaintDescription()
   return result;
 }
 
@@ -107,4 +119,36 @@ function validateQuantity() {
     quantity.style.borderColor = "red";
     return false;
   }
+}
+
+//complaints group
+function validateComplaintsGroup(){
+  let checkBoxes = Array.from( complaintsGroup.querySelectorAll("input") )
+  if(checkBoxes.some((checkBox) => checkBox.checked === true)){
+    complaintsGroup.style.borderColor = "green"
+    return true;
+
+  }
+  else{
+    complaintsGroup.style.borderColor = "red"
+    return false;
+  }
+}
+
+//complaint description
+function validateComplaintDescription(){
+  console.log("other complaint description")
+  if(otherCompliant.checked){
+  if(complaintDescription.value.length>=20){
+    complaintDescription.style.borderColor = "green"
+    return true
+  }
+  else{
+    complaintDescription.style.borderColor = "red"
+    return false
+  }
+}else{
+  complaintDescription.style.borderColor = "green"
+  return true  
+}
 }
