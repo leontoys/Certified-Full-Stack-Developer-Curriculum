@@ -6,41 +6,16 @@ const caseInsensitiveFlag = document.getElementById("i")
 const globalFlag = document.getElementById("g")
 
 const getFlags = ()=>{
-  let flags = ""
-  if(caseInsensitiveFlag.checked){
-    flags+= "i"
+  if(caseInsensitiveFlag.checked&&globalFlag.checked){
+    return "ig"
   }
-  if(globalFlag.checked){
-    flags+= "g"
-  }  
-  return flags
+  else if(caseInsensitiveFlag.checked){
+    return "i"
+  }
+  else if(globalFlag.checked){
+    return "g"
+  }
+  else{
+    return ""
+  }
 }
-
-const testRegex = (event)=>{
-console.log("\n---testing---")
-const flags = getFlags();
-const regexp = new RegExp(regexPattern.value, flags);
-console.log(regexp)
-const str = stringToTest.textContent;
-console.log(str)
-let matches = null;
-if(flags.includes("g")){
-  matches = str.matchAll(regexp);
-}else{
-  matches = str.match(regexp);
-}
-if(matches){
-  testResult.innerText = ""
-    console.log(matches)
-      for(const match of matches){
-        testResult.innerText += `${match[0]}, `
-        console.log(match)
-      }
-      testResult.innerText = testResult.innerText.slice(0,-1)
-}
-else{
-  testResult.innerText = "no match"
-}
-}
-
-testButton.addEventListener("click",testRegex)
