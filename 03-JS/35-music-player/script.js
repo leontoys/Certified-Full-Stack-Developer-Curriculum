@@ -113,6 +113,33 @@ audio.play()
 }
 //Event Listener for play Button
 playButton.addEventListener("click",()=>{
+    //if no current song
+    if(userData.currentSong===null){
     //plays first song
-    playSong(0)
+    playSong(userData.songs[0].id)
+    }
+    else{
+        playSong(userData.currentSong.id)
+    }
 })
+//get all songs in the playlist
+const songs = document.querySelectorAll(".playlist-song")
+//loop through the songs and add event listener to all songs
+songs.forEach(song => {
+    //get button
+    const button = song.querySelector("button")
+    console.log(button)
+    button.addEventListener("click",()=>{
+        //get attribute - song-n 
+        const id = Number(song.getAttribute("id").split("-")[1])
+        playSong(id)
+    })
+});
+//pause song
+const pauseSong = ()=>{
+    userData.songCurrentTime = audio.currentTime 
+    //remove playing class
+    playButton.classList.remove("playing")
+    //pause song
+    audio.pause()
+}
