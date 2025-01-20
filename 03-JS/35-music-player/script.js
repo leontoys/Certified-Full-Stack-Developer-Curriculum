@@ -128,7 +128,6 @@ const songs = document.querySelectorAll(".playlist-song")
 songs.forEach(song => {
     //get button
     const button = song.querySelector("button")
-    console.log(button)
     button.addEventListener("click",()=>{
         //get attribute - song-n 
         const id = Number(song.getAttribute("id").split("-")[1])
@@ -143,3 +142,29 @@ const pauseSong = ()=>{
     //pause song
     audio.pause()
 }
+//event listener to pause button
+pauseButton.addEventListener("click",pauseSong)
+//get current song
+const getCurrentSongIndex = () => userData.songs.indexOf(userData.currentSong);
+//get next song
+const getNextSong = ()=> userData.songs[getCurrentSongIndex()+1]
+//play next song
+const playNextSong = ()=>{
+  //if no current song, play first song
+  if(userData.currentSong===null){
+    playSong(userData.songs[0].id)
+    return
+  }
+  const nextSong = getNextSong()
+  if(nextSong){
+    playSong(nextSong.id)
+  }
+  //if current song is last, then on click of next pause 
+  else {
+    userData.currentSong = null
+    userData.songCurrentTime = 0
+    pauseSong()
+  }
+}
+//next even listener
+nextButton.addEventListener("click",playNextSong)
