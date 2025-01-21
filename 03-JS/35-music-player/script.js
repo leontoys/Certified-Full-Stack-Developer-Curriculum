@@ -187,9 +187,13 @@ const playPreviousSong = ()=>{
 previousButton.addEventListener("click",playPreviousSong)
 //highlight current song
 const highlightCurrentSong = ()=>{
+/*   
   const songs = Array.from( document.querySelectorAll(".playlist-song") )
   const highlighted = songs.find((song)=>song.getAttribute("aria-current")==="true")
   if(highlighted){
     highlighted.removeAttribute("aria-current")
-  }
+  } */
+  const previousCurrentSong = document.querySelector('.playlist-song[aria-current="true"]');
+  previousCurrentSong?.removeAttribute("aria-current");  
+  const songToHighlight = document.getElementById(`song-${userData.currentSong?.id}`)
 }
