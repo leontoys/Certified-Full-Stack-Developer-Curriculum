@@ -88,7 +88,7 @@ const userData = {
 //this function will play the song
 //it takes an id and finds that song from the list
 //and plays also sets current time and adds playing class to play button
-const playSong = (id)=>{
+const playSong = (id,start=true)=>{
 //find the song where id matches
 const song = userData.songs.find((song)=>song.id===id)
 //now that we found the song, set the src and title 
@@ -96,7 +96,7 @@ const song = userData.songs.find((song)=>song.id===id)
 audio.src = song.src
 audio.title = song.title
 //if no current song is playing 
-if(!userData.currentSong){
+if(!userData.currentSong|| start){
     //to start from the beginning
     audio.currentTime = 0
 }
@@ -119,7 +119,7 @@ playButton.addEventListener("click",()=>{
     playSong(userData.songs[0].id)
     }
     else{
-        playSong(userData.currentSong.id)
+        playSong(userData.currentSong.id,false)
     }
 })
 //get all songs in the playlist
@@ -168,3 +168,28 @@ const playNextSong = ()=>{
 }
 //next even listener
 nextButton.addEventListener("click",playNextSong)
+//get previous song
+const getPreviousSong = ()=>userData.songs[getCurrentSongIndex()-1]
+//play previous song
+const playPreviousSong = ()=>{
+  if(userData.currentSong===null){
+    return
+  }
+  const previousSong = getPreviousSong()
+  if(previousSong===undefined){
+    playSong(userData.songs[0].id)
+  }
+  else{
+    playSong(previousSong.id)
+  }
+}
+//even listen
+previousButton.addEventListener("click",playPreviousSong)
+//highlight current song
+const highlightCurrentSong = ()=>{
+  const songs = Array.from( document.querySelectorAll(".playlist-song") )
+  const highlighted = songs.find((song)=>song.getAttribute("aria-current")==="true")
+  if(highlighted){
+    highlighted.removeAttribute("aria-current")
+  }
+}
