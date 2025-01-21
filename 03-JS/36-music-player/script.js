@@ -4,6 +4,8 @@ const playButton = document.getElementById("play");
 const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const previousButton = document.getElementById("previous");
+const playingSong = document.getElementById("player-song-title")
+const songArtist = document.getElementById("player-song-artist")
 //list of songs
 const allSongs = [
   {
@@ -110,6 +112,12 @@ playButton.classList.add("playing")
 userData.currentSong = song
 //now play the song 
 audio.play()
+//highlight current song
+highlightCurrentSong()
+//display song info
+setPlayerDisplay()
+//seet
+setPlayButtonAccessibleText()
 }
 //Event Listener for play Button
 playButton.addEventListener("click",()=>{
@@ -165,7 +173,12 @@ const playNextSong = ()=>{
     userData.songCurrentTime = 0
     pauseSong()
   }
+setPlayerDisplay()
+highlightCurrentSong()
+setPlayButtonAccessibleText()  
 }
+//auto play
+audio.addEventListener("ended",playNextSong)
 //next even listener
 nextButton.addEventListener("click",playNextSong)
 //get previous song
@@ -196,4 +209,14 @@ const highlightCurrentSong = ()=>{
   const previousCurrentSong = document.querySelector('.playlist-song[aria-current="true"]');
   previousCurrentSong?.removeAttribute("aria-current");  
   const songToHighlight = document.getElementById(`song-${userData.currentSong?.id}`)
+  songToHighlight?.setAttribute("aria-current",true)
+}
+//display player
+const setPlayerDisplay = ()=>{
+  playingSong.innerText = userData.currentSong ? userData.currentSong.title : ''
+  songArtist.innerText = userData.currentSong ? userData.currentSong.artist : ''
+}
+//accessibility
+const setPlayButtonAccessibleText = ()=>{
+  playButton.setAttribute("aria-label",userData.currentSong ? `Play ${userData.currentSong}`: `Play`)
 }
