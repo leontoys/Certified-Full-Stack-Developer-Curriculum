@@ -11,7 +11,7 @@ const preview = document.getElementById("preview")
 markdownIput.addEventListener("input",()=>{
     const result = convertMarkdown()
     htmlOutput.innerText = result
-
+    preview.innerHTML = result
 })
 
 /***********************
@@ -19,24 +19,46 @@ markdownIput.addEventListener("input",()=>{
  **********************/
 //convert markdown function
 function convertMarkdown(){
-    const regexh3 = /^[#]{3}\s/
-    const regexh2 = /^[#]{2}\s/
-    const regexh1 = /^[#]{1}\s/
-    let input = ''
-    let match = null
+    const regexh3 = /[#]{3}\s/g
+    const regexh2 = /[#]{2}\s/g
+    const regexh1 = /[#]{1}\s/g
+    let input = markdownIput.value
+    //let match = null
     let output = ''
+    let matches = null
+    let count = 0
+    let previousIndex = 0
+    let currentSlice = ''
+    let previousSlice = ''
 
-    if(markdownIput.value.match(regexh3)){
-        console.log("h3",markdownIput.value.match(regexh3))
+    if(input.match(regexh1)){
+/*         match = input.match(regexh1)
+        output = input.slice(match["index"]+2)
+        output = `<h1>${output}</h1>` */
+        matches = Array.from(input.matchAll(regexh1))
+        console.log(matches)
+        matches.forEach(match => {
+            //for first match
+             if(count===0){
+                currentSlice = input.slice(match["index"]+2)
+                output = `<h1>${currentSlice}</h1>`
+                previousIndex = match["index"]
+            }
+            else{ 
+                //from next match onwards
+                previousSlice = input.slice(previousIndex+2,match["index"])
+                currentSlice = input.slice(match["index"]+2)
+                console.log("previous slice",previousSlice)
+                console.log("current",currentSlice)
+                output = `<h1>${previousSlice}</h1><h1>${currentSlice}</h1>`
+            }
+            count++
+        });
     }
-    else    if(markdownIput.value.match(regexh2)){
-        console.log("h2",markdownIput.value.match(regexh2))
+    else{
+        output = input
     }
-    else    if(markdownIput.value.match(regexh1)){
-        match = markdownIput.value.match(regexh1)
-        input = markdownIput.value.slice(match["index"]+2)
-        output = `<h1>${input}</h1>`
-        return output
-    } 
+    return output
+
 }
 
