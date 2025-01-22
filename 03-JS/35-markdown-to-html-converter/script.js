@@ -17,34 +17,58 @@ markdownIput.addEventListener("input", () => {
 /***********************
  * Function Definitions
  **********************/
+const tags = {
+  "#" : "h1",
+  "##" : "h2",
+  "###" : "h3",
+  "\n#" : "h1",
+  "\n##" : "h2",
+  "\n###" : "h3",  
+  "**" : "strong",
+  "__" : "strong",
+  "*" : "em",
+  "_" : "em",
+  ">" : "blockquote"
+}
+const getTag = (match)=>{
+  if(tags[match]){
+    return tags[match]
+  }
+  else{
+    match = match.slice(0,-1)
+    return tags[match]
+  }
+}
 //convert markdown function
 function convertMarkdown() {
-  const tags = {
-    "#" : "h1",
-    "##" : "h2",
-    "###" : "h3"
-  }
-  const regexh3 = new RegExp(/[#]{3}\s/g);
-  const regexh2 = new RegExp(/[#]{2}\s/g);
-  const regexh1 = new RegExp(/[#]{1}\s/g);
+  const regexh3 = new RegExp(/^[#]{3}\s/);
+  const regexh2 = new RegExp(/^[#]{2}\s/);
+  const regexh1 = new RegExp(/^[#]{1}\s/);
+  const regexh3n = new RegExp(/[\n][#]{3}\s/);
+  const regexh2n = new RegExp(/[\n][#]{2}\s/);
+  const regexh1n = new RegExp(/[\n][#]{1}\s/);  
+  const regexstrong1 = new RegExp(/[*]{2}/);
+  const regexstrong2 = new RegExp(/[_]{2}/);
+  const regexem1 = new RegExp(/[*]{1}/);
+  const regexem2 = new RegExp(/[_]{1}/);  
+  const regexquote = new RegExp(/[>]{1}\s/);  
+
   const pattern = new RegExp(
-    regexh1.source + "|" + regexh2.source + "|" + regexh3.source,
+    regexh1.source + "|" + regexh2.source + "|" + regexh3.source + "|" + 
+    regexh1n.source + "|" + regexh2n.source + "|" + regexh3n.source + "|" + 
+    regexstrong1.source + "|" + regexstrong2.source + "|" + regexem1.source + "|" + 
+    regexem2.source + "|" + regexquote.source,      
     "g",
   )
-  console.log("pattern",pattern)
+  //console.log("pattern",pattern)
   let input = markdownIput.value;
-  //let match = null
-  let output = "";
+  let output = input
   let matches = null;
   let count = 0;
-  let currentSlice = ""
-  let previousSlice = ""
   let currentMatch = ""
-  let previousMatch = ""
-  let previousIndex = 0
   let currentIndex = 0
-  let previousLength = 0
-  let currentLength = 0
+  let currentTag = ""
+  let previousTag = ""
 
   if (input.match(pattern)) {
     matches = Array.from(input.matchAll(pattern));
@@ -52,24 +76,38 @@ function convertMarkdown() {
     matches.forEach((match) => {
       //for first match
       if (count === 0) {
-        currentSlice = input.slice(match["index"] + match["length"]+1);
-        currentMatch = match["0"].slice(0,-1)
-        output = `<${tags[currentMatch]}>${currentSlice}</${tags[currentMatch]}>`;
-        previousIndex = match["index"];//for next iteration if any
-        previousMatch = match["0"].slice(0,-1)//for next if any
+        //first find the index of the match
+        currentIndex = match["index"]
+        console.log(currentIndex)
+        //then find the tag to be inserted
+        currentMatch = match["0"]
+        console.log(currentMatch)
+        //find the tag
+        currentTag = getTag(currentMatch)// tags[currentMatch]
+        console.log(currentTag)
+        //at the index insert the opening tag
+        output = input.replace(match["0"],`<${currentTag}>`)
+        console.log(output)
+        //keep the tag in the memory - as last tag
+
       } else {
         //from next match onwards
-        previousSlice = input.slice(previousIndex + match["length"]+1, match["index"]);
-        currentSlice = input.slice(match["index"] + match["length"]+1);
-        console.log("previous slice", previousSlice);
-        console.log("current", currentSlice);
-        currentMatch = match["0"].slice(0,-1)
-        output = `<${tags[previousMatch]}>${previousSlice}</${tags[previousMatch]}><${tags[currentMatch]}>${currentSlice}</${tags[currentMatch]}>`;
-        previousMatch = currentMatch//for next
-        previousIndex = match["index"]//for next
+        //first find the match
+        currentMatch = match["0"]//.slice(0,-1)
+        console.log(currentMatch)
+        //get previous tag  
+        previousTag = currentTag    
+        //get current tag  
+        currentTag = getTag(currentMatch)//tags[currentMatch]
+        console.log(currentTag) 
+        //replace output 
+        output = output.replace(match["0"],`</${previousTag}><${currentTag}>`)
+        console.log(output)              
     }
       count++;
     });
+    //once comes out, append the closing tag with the closing
+    output += `</${currentTag}>`
   } else {
     output = input;
   }

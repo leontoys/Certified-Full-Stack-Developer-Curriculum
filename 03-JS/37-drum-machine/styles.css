@@ -1,25 +1,53 @@
-*{
+* {
+    margin: 0;
     padding: 0;
-    margin : 0;
+    box-sizing: border-box;
 }
 
-#drum-machine{
+body {
+    background-color: darkgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#drum-machine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+}
+
+#pad-bank {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    height: 500px;
-    width : 250px;
-    border: 1px solid;
-    margin : auto;
-    padding: auto;
-    margin-top: 10%;
-    background-color: gray;
+    grid-template-columns: repeat(3, 80px);
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.drum-pad{
-    border : 1px solid;
-    height: 10px;
-    width: 10px;
-    margin: 10px;
-    padding: 10px;
+.drum-pad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: 80px;
+    width: 80px;
+    border-radius: 8px;
+}
+
+#display {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid green;
     text-align: center;
+    font-size: 1.2rem;
+    width: 80%;
+    height: auto;
 }
