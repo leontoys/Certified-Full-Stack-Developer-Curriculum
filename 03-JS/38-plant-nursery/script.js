@@ -35,8 +35,13 @@ const royalCrown = {
 }
 
 const catalog = new Map()
-catalog.set(ballerina,{"small":1,
-                        "medium":2,
-                        "large":3})
+catalog.set(ballerina, { small: 20, medium: 15, large: 12 })
+catalog.set(prettyPolly, { small: 20, medium: 15, large: 12 })
+catalog.set(willowVale, { small: 20, medium: 15, large: 12 })
+catalog.set(hidcote, { small: 20, medium: 15, large: 12 })
+catalog.set(imperialGem, { small: 20, medium: 15, large: 12 })
+catalog.set(royalCrown, { small: 20, medium: 15, large: 12 })
+
+
 console.log(catalog)
 console.log(catalog.size)
