@@ -65,6 +65,48 @@ const sellPlants = (plant, size, potsNo) => {
     }
 }
 
-console.log(sellPlants(ballerina, "small", 10));
+//console.log(sellPlants(ballerina, "small", 10));
 
-console.log(catalog)
+//console.log(catalog)
+
+const displayCatalog = ()=>{
+/*     for (const key of catalog.keys()) {
+        console.log(key)  
+    } */
+/*    for(const value of catalog.values()){
+    console.log(value)
+   } */
+/*   for(const entry of catalog.entries()){
+    //console.log(entry)
+  } */
+//<scientific-name> '<cultivar>': <small-pots> S, <medium-pots> M, <large-pots> L  
+    let str = ""
+  catalog.forEach((value,key)=>{
+    //console.log(value,key)
+    str += `${key.scientificName} '${key.cultivar}': ${value.small} S, ${value.medium} M, ${value.large} L\n`
+  })
+  return str
+}
+
+//console.log(displayCatalog())
+
+const displayPlantsSet = ()=>{
+    let myArray = []//catalog.keys()
+    for (const element of catalog.keys()) {
+        console.log(element.commonName)
+        myArray.push(element.commonName)
+    }
+    console.log(myArray)
+    const catalogSet = new Set(myArray)
+/*     catalogSet.add(ballerina)
+    catalogSet.add(ballerina)
+    catalogSet.add(prettyPolly) */
+
+    return catalogSet
+}
+
+const plantsSet = displayPlantsSet()
+console.log(plantsSet)
+/*
+console.log(plantsSet.has(ballerina))
+plantsSet.clear() */
