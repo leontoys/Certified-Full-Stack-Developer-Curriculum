@@ -42,17 +42,29 @@ catalog.set(hidcote, { small: 33, medium: 13, large: 18 });
 catalog.set(imperialGem, { small: 19, medium: 35, large: 28 });
 catalog.set(royalCrown, { small: 40, medium: 22, large: 9 });
 
-const sellPlants = (plant,potSize,potNumbers)=>{
-    if(potNumbers > catalog.get(plant).potSize){
-        //return `Not enough ${potSize} size pots for ${plant.scientificName} '${plant.cultivar}'. Only ${catalog.get(plant)[potSize]} left`
-        return `Not enough ${potSize} size pots for ${plant.scientificName} '${plant.cultivar}'. Only ${catalog.get(plant)[potSize]} left.`
+const removePlant = (plant)=>{
+    return catalog.delete(plant)
+}
+//console.log(removePlant("ballerina"))-this works
+//console.log(removePlant(ballerina));
+
+const sellPlants = (plant, size, potsNo) => {
+    if(!catalog.has(plant)){
+        return `Item not found.`
+    }
+    const name = `${plant.scientificName} '${plant.cultivar}'`
+    const pots = catalog.get(plant);
+    if (pots[size] - potsNo < 0) {
+        return `Not enough ${size} size pots for ${name}. Only ${pots[size]} left.`
     }
     else{
-        catalog.get(plant)[potSize] -= potSize
+        console.log(pots)
+        pots[size] = pots[size] - potsNo
+        catalog.set(plant,pots) 
         return `Catalog successfully updated.`
     }
 }
-console.log(sellPlants(ballerina,"small",25))
-console.log(sellPlants(ballerina,"small",10))
+
+console.log(sellPlants(ballerina, "small", 10));
 
 console.log(catalog)
