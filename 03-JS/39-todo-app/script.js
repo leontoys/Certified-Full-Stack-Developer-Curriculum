@@ -10,20 +10,29 @@ const titleInput = document.getElementById("title-input")
 const dateInput = document.getElementById("date-input")
 const descriptionInput = document.getElementById("description-input")
 
-const taskData = []//to store all tasks - title,duedate,description - will be stored in localstorage
+const taskData = JSON.parse(localStorage.getItem("data")) || []//to store all tasks - title,duedate,description - will be stored in localstorage
 
 let currentTask = {}//track state while editing
 
+//removing special characters
+const removeSpecialChars = (input) => {
+    return input.trim().replace(/[^A-Za-z0-9\-\s]/g, '')
+  }
+
 //refactoring add new task submit event listener
 const addOrUpdateTask = ()=>{
+    if(!titleInput.value.trim()){
+        alert("Please provide a title")
+        return
+    }
     //check if the task already exists in the array
     const dataArrIndex = taskData.findIndex((item)=>item.id===currentTask.id)
     //for new task object
     const taskObj = {
-        id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
-        title: titleInput.value,
-        date: dateInput.value,
-        description: descriptionInput.value,
+        id: `${removeSpecialChars(titleInput.value).toLowerCase().split(" ").join("-")}-${Date.now()}`,
+        title: removeSpecialChars(titleInput.value),
+        date: removeSpecialChars(dateInput.value),
+        description: removeSpecialChars(descriptionInput.value),
     }  
    // console.log(taskObj)
    //if new task
@@ -34,6 +43,8 @@ const addOrUpdateTask = ()=>{
    else{
     taskData[dataArrIndex] = taskObj
    }
+   //store
+   localStorage.setItem("data",JSON.stringify(taskData))
    updateTaskContainer()
    reset()     
 }
@@ -60,6 +71,7 @@ const deleteTask = (buttonEl)=>{
     const dataArrIndex = taskData.findIndex((item)=>item.id===buttonEl.parentElement.id)
     buttonEl.parentElement.remove()
     taskData.splice(dataArrIndex,1)
+    localStorage.setItem("data",JSON.stringify(taskData))
 }
 
 //edit task
@@ -83,7 +95,13 @@ const reset = ()=>{
     descriptionInput.value = ""
     taskForm.classList.toggle("hidden")
     currentTask = {}
+    addOrUpdateTaskBtn.innerText = "Add Task"
 }//to clear input fields
+
+//show the tasks retrieved from local storage
+if(taskData.length){
+    updateTaskContainer()
+}
 
 //on click of add new task button
 openTaskFormBtn.addEventListener("click",()=>{
@@ -122,3 +140,21 @@ taskForm.addEventListener("submit",(e)=>{
     e.preventDefault()
     addOrUpdateTask()
 })
+
+/* //tasks
+const myTaskArr = [
+    { task: "Walk the Dog", date: "22-04-2022" },
+    { task: "Read some books", date: "02-11-2023" },
+    { task: "Watch football", date: "10-08-2021" },
+  ];
+//add it to local storage - DON'T FORGET TO CONVERT TO STRING
+localStorage.setItem("data",JSON.stringify(myTaskArr))
+//get it from the local storage
+const getTaskArr = localStorage.getItem("data")
+console.log(typeof getTaskArr)
+const getTaskArrObj = JSON.parse(localStorage.getItem("data"))
+console.log(getTaskArrObj)
+//remove
+//localStorage.removeItem("data")
+//clear
+localStorage.clear() */
