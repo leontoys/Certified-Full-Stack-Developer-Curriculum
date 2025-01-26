@@ -41,7 +41,10 @@ countDownAndUp(3); */
 const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
-const animationData = []
+const animationData = [{
+  inputVal : 5,//will represent the value of the input each time your recursive function runs
+  addElDelay : 1000//will be the delay between adding DOM elements to the page
+}]
 
 const decimalToBinary = (input) => {
 
