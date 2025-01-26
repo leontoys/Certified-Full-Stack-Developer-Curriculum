@@ -41,10 +41,23 @@ countDownAndUp(3); */
 const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
-const animationData = [{
+
+const animationContainer = document.getElementById("animation-container")
+
+const animationData = [
+{
   inputVal : 5,//will represent the value of the input each time your recursive function runs
   addElDelay : 1000//will be the delay between adding DOM elements to the page
-}]
+},
+{
+  inputVal : 2,//will represent the value of the input each time your recursive function runs
+  addElDelay : 1500//will be the delay between adding DOM elements to the page
+},
+{
+  inputVal : 1,//will represent the value of the input each time your recursive function runs
+  addElDelay : 2000//will be the delay between adding DOM elements to the page
+}
+]
 
 const decimalToBinary = (input) => {
 
@@ -95,7 +108,16 @@ result.innerText = remainders.reverse().join("") */
 
 
 const showAnimation = ()=>{
- setTimeout(() => {
+
+  result.innerText = "Call Stack Animation"
+
+  animationData.forEach(obj => {
+    setTimeout(() => {
+      animationContainer.innerHTML += `<p id="${obj.inputVal}" class="animation-frame">${decimalToBinary()}</p>`
+    }, obj.addElDelay);
+  });
+
+/*  setTimeout(() => {
     console.log("free")    
  }, 500);
  setTimeout(() => {
@@ -103,7 +125,7 @@ const showAnimation = ()=>{
  }, 1000);  
  setTimeout(() => {
     console.log("Camp")    
- }, 1500);  
+ }, 1500);   */
 }
 
 const checkUserInput = () => {
