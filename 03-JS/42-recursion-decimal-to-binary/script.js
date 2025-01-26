@@ -18,7 +18,8 @@ const c = () => {
 
 console.log(a()) */
 
-/* const numberInput = document.getElementById("number-input");
+/* 
+const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
 
@@ -37,9 +38,21 @@ const countDownAndUp = (number)=>{
 
 countDownAndUp(3); */
 
+const numberInput = document.getElementById("number-input");
+const convertBtn = document.getElementById("convert-btn");
+const result = document.getElementById("result");
+const animationData = []
 
 const decimalToBinary = (input) => {
-  let binary = ""
+
+if (input===0||input===1) {
+    return String(input)
+}
+else{
+    return decimalToBinary(Math.floor(input / 2)) + (input%2)
+}
+
+/*   let binary = ""
   if (input===0) {
     binary = "0"
   }
@@ -48,7 +61,7 @@ const decimalToBinary = (input) => {
     binary = ( input % 2 ) + binary
   }
 
-  result.innerText = binary;
+  result.innerText = binary; */
 
   /* const inputs = [] 
 const quotients = [] 
@@ -77,16 +90,34 @@ console.log("Remainders: ",remainders)
 result.innerText = remainders.reverse().join("") */
 };
 
+
+const showAnimation = ()=>{
+ setTimeout(() => {
+    console.log("free")    
+ }, 500);
+ setTimeout(() => {
+    console.log("Code")
+ }, 1000);  
+ setTimeout(() => {
+    console.log("Camp")    
+ }, 1500);  
+}
+
 const checkUserInput = () => {
+  const inputInt = parseInt(numberInput.value)  
   if (
     !numberInput.value ||
-    isNaN(parseInt(numberInput.value)) ||
-    parseInt(numberInput.value) < 0
+    isNaN(inputInt) ||
+    inputInt < 0
   ) {
     window.alert("Please provide a decimal number greater than or equal to 0");
     return;
   }
-  decimalToBinary(parseInt(numberInput.value));
+  if (inputInt===5) {
+    showAnimation()
+    return    
+ }    
+  result.textContent = decimalToBinary(inputInt);
   numberInput.value = "";
 };
 
