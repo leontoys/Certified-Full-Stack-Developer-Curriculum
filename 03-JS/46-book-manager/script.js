@@ -19,14 +19,16 @@ const getBookmarks = () => {
   //getBookmarks function should return the bookmarks key from localStorage
   //local storage stores data as string so we need to parse
   try {
-    const bookmarks = JSON.parse(localStorage.getItem("bookmarks"))
-    return Array.isArray(bookmarks) ? bookmarks : []    
+    const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+    return Array.isArray(bookmarks) && bookmarks.every(
+      (b) => b && typeof b === "object" && "name" in b && "category" in b && "url" in b
+    ) ? bookmarks : [];    
   } catch (error) {
-    console.error(error)
-    return []
+    console.error("Invalid data in localStorage:", error);
+    return [];
   }
-
 };
+
 
 //a function named displayOrCloseForm
 const displayOrCloseForm = () => {
@@ -40,7 +42,7 @@ addBookmarkButton.addEventListener("click", () => {
   //update the inner text of .category-name to be //
   // the value of the selected option from #category-dropdown
   categoryName[0].innerText =
-    categoryDropdown.options[categoryDropdown.selectedIndex].text;
+  categoryDropdown.options[categoryDropdown.selectedIndex].text;
   //call displayOrCloseForm to display the form section and hide the main section.
   displayOrCloseForm();
 });
@@ -127,17 +129,4 @@ deleteBookmarkButton.addEventListener("click",(event)=>{
     localStorage.setItem("bookmarks",JSON.stringify(bookmarksFiltered))
     //update view
     viewCategory()
-/*     categoryList.innerHTML = ""
-    if(!bookmarksFiltered.length){
-        categoryList.innerHTML =  `<p>No Bookmarks Found</p>`;
-    }
-    else{
-    bookmarksFiltered.forEach(({name,category,url}) => {
-        categoryList.innerHTML += `
-              <div>
-                  <input type="radio" id="${name}" name="${category}" value="${name}"></input>
-                <label for="${name}"><a href="${url}">${name}</a></label>
-              </div>`;
-      });
-    }  */
 })
