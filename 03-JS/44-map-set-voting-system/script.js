@@ -55,13 +55,15 @@ vote("Palestine","Shilna")
 
 const displayResults = ()=>{
 
-console.log("Poll Results:")
+let result = "Poll Results:"
 
 poll.forEach((value,key) => {
     //console.log(value,key)
-    console.log(`${key}: ${value.size} votes`)
+    result += `${key}: ${value.size} votes`
 });
+
+return result
 
 }
 
-//displayResults()
+displayResults()
