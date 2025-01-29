@@ -2,9 +2,7 @@ const addBookmarkButton = document.getElementById("add-bookmark-button");
 const categoryDropdown = document.getElementById("category-dropdown");
 const categoryName = document.getElementsByClassName("category-name");
 const closeFormButton = document.getElementById("close-form-button");
-const addBookmarkButtonForm = document.getElementById(
-  "add-bookmark-button-form"
-);
+const addBookmarkButtonForm = document.getElementById("add-bookmark-button-form");
 const viewCategoryButton = document.getElementById("view-category-button");
 const nameInput = document.getElementById("name");
 const url = document.getElementById("url");
@@ -21,7 +19,6 @@ const getBookmarks = () => {
   //getBookmarks function should return the bookmarks key from localStorage
   //local storage stores data as string so we need to parse
   const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-  console.log("bookmarks fetched", bookmarks)
   return bookmarks;
 };
 
@@ -70,10 +67,8 @@ addBookmarkButtonForm.addEventListener("click", () => {
 });
 
 //event listener for view category
-
-// When you click #view-category-button,
-viewCategoryButton.addEventListener("click", () => {
-    categoryList.innerHTML = ""
+const viewCategory = () => {
+categoryList.innerHTML = ""
   //get selected category
   const category = categoryDropdown.value;
   //get bookmarks
@@ -96,7 +91,10 @@ viewCategoryButton.addEventListener("click", () => {
     });
     displayOrHideCategory()
   }
-});
+}
+
+// When you click #view-category-button,
+viewCategoryButton.addEventListener("click", viewCategory );
 
 const displayOrHideCategory = ()=>{
     mainSection.classList.toggle("hidden")
@@ -119,5 +117,19 @@ deleteBookmarkButton.addEventListener("click",(event)=>{
         bookmark)=>bookmark.name!==radio.value||bookmark.category!==radio.name)    
     console.log(bookmarksFiltered)
     //update local storage
-    localStorage.setItem("bookmarks",JSON.stringify(bookmarksFiltered   ))
+    localStorage.setItem("bookmarks",JSON.stringify(bookmarksFiltered))
+    //update view
+    categoryList.innerHTML = ""
+    if(!bookmarksFiltered.length){
+        categoryList.innerHTML =  `<p>No Bookmarks Found</p>`;
+    }
+    else{
+    bookmarksFiltered.forEach(({name,category,url}) => {
+        categoryList.innerHTML += `
+              <div>
+                  <input type="radio" id="${name}" name="${category}" value="${name}"></input>
+                  <label><a href="${url}">${name}</a></label>
+              </div>`;
+      });
+    }  
 })
