@@ -18,8 +18,14 @@ const getBookmarks = () => {
   //getBookmarks function should return an array.
   //getBookmarks function should return the bookmarks key from localStorage
   //local storage stores data as string so we need to parse
-  const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-  return bookmarks;
+  try {
+    const bookmarks = JSON.parse(localStorage.getItem("bookmarks"))
+    return Array.isArray(bookmarks) ? bookmarks : []    
+  } catch (error) {
+    console.error(error)
+    return []
+  }
+
 };
 
 //a function named displayOrCloseForm
@@ -68,7 +74,7 @@ addBookmarkButtonForm.addEventListener("click", () => {
 
 //event listener for view category
 const viewCategory = () => {
-categoryList.innerHTML = ""
+  categoryList.innerHTML = ""
   //get selected category
   const category = categoryDropdown.value;
   //get bookmarks
@@ -79,22 +85,23 @@ categoryList.innerHTML = ""
   );
   if (!bookmarksFiltered.length) {
     categoryList.innerHTML =  `<p>No Bookmarks Found</p>`;
-    displayOrHideCategory()
   } 
   else {
     bookmarksFiltered.forEach(({name,category,url}) => {
       categoryList.innerHTML += `
             <div>
                 <input type="radio" id="${name}" name="${category}" value="${name}"></input>
-                <label><a href="${url}">${name}</a></label>
+                  <label for="${name}"><a href="${url}">${name}</a></label>
             </div>`;
     });
-    displayOrHideCategory()
   }
 }
 
 // When you click #view-category-button,
-viewCategoryButton.addEventListener("click", viewCategory );
+viewCategoryButton.addEventListener("click", ()=>{
+  displayOrHideCategory()
+  viewCategory()
+} );
 
 const displayOrHideCategory = ()=>{
     mainSection.classList.toggle("hidden")
@@ -113,13 +120,14 @@ deleteBookmarkButton.addEventListener("click",(event)=>{
     const bookmarks = getBookmarks()
     console.log(bookmarks)
     //filter
-    const bookmarksFiltered = bookmarks.filter((
-        bookmark)=>bookmark.name!==radio.value||bookmark.category!==radio.name)    
+    const bookmarksFiltered = bookmarks.filter((bookmark)=>
+      !(bookmark.name===radio.value&&bookmark.category===radio.name))    
     console.log(bookmarksFiltered)
     //update local storage
     localStorage.setItem("bookmarks",JSON.stringify(bookmarksFiltered))
     //update view
-    categoryList.innerHTML = ""
+    viewCategory()
+/*     categoryList.innerHTML = ""
     if(!bookmarksFiltered.length){
         categoryList.innerHTML =  `<p>No Bookmarks Found</p>`;
     }
@@ -128,8 +136,8 @@ deleteBookmarkButton.addEventListener("click",(event)=>{
         categoryList.innerHTML += `
               <div>
                   <input type="radio" id="${name}" name="${category}" value="${name}"></input>
-                  <label><a href="${url}">${name}</a></label>
+                <label for="${name}"><a href="${url}">${name}</a></label>
               </div>`;
       });
-    }  
+    }  */
 })
