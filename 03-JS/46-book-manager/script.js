@@ -12,8 +12,8 @@ const categoryList = document.getElementById("category-list");
 const mainSection = document.getElementById("main-section")
 const formSection = document.getElementById("form-section")
 const bookmarkListSection = document.getElementById("bookmark-list-section")
-const closeListButton = document.getElementById("#close-list-button")
-
+const closeListButton = document.getElementById("close-list-button")
+const deleteBookmarkButton = document.getElementById("delete-bookmark-button")
 
 //getBookmarks function.
 const getBookmarks = () => {
@@ -21,7 +21,7 @@ const getBookmarks = () => {
   //getBookmarks function should return the bookmarks key from localStorage
   //local storage stores data as string so we need to parse
   const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-  //console.log("bookmarks fetched", Object.keys(bookmarks[0]));
+  console.log("bookmarks fetched", bookmarks)
   return bookmarks;
 };
 
@@ -54,7 +54,7 @@ addBookmarkButtonForm.addEventListener("click", () => {
   // category set to the value of the selected option from the category dropdown,
   // and url set to the value of the #url input.
   const bookmark = {
-    name: name.value,
+    name: nameInput.value,
     category: categoryDropdown.value,
     url: url.value,
   };
@@ -69,8 +69,11 @@ addBookmarkButtonForm.addEventListener("click", () => {
   displayOrCloseForm();
 });
 
+//event listener for view category
+
 // When you click #view-category-button,
 viewCategoryButton.addEventListener("click", () => {
+    categoryList.innerHTML = ""
   //get selected category
   const category = categoryDropdown.value;
   //get bookmarks
@@ -100,6 +103,21 @@ const displayOrHideCategory = ()=>{
     bookmarkListSection.classList.toggle("hidden")
 }
 
-const closeListButton = () => {
-    
-}
+closeListButton.addEventListener("click",()=>{
+    bookmarkListSection.classList.add("hidden")
+    mainSection.classList.remove("hidden")
+})
+
+deleteBookmarkButton.addEventListener("click",(event)=>{
+    const radio = document.querySelector('input[type="radio"]:checked')
+    console.log(radio)
+    //filter this out
+    const bookmarks = getBookmarks()
+    console.log(bookmarks)
+    //filter
+    const bookmarksFiltered = bookmarks.filter((
+        bookmark)=>bookmark.name!==radio.value||bookmark.category!==radio.name)    
+    console.log(bookmarksFiltered)
+    //update local storage
+    localStorage.setItem("bookmarks",JSON.stringify(bookmarksFiltered   ))
+})
