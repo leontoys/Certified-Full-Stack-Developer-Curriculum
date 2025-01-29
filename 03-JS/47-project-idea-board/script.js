@@ -33,19 +33,22 @@ class ProjectIdeaBoard{
     }
     //methods
     pin(idea){//instance of project idea
-        this.ideas.push(idea)
+        if(idea instanceof ProjectIdea){
+            //console.log("pin",idea)
+            this.ideas.push(idea)
+        }
+
     }
     unpin(idea){
-        return this.ideas.filter((element)=>element.title!==idea.title)
+        this.ideas = this.ideas.filter((element)=>element.title!==idea.title)
     }
     count(){
         return this.ideas.length
     }
     formatToString(){
         let str = `${this.title} has ${this.count()} idea(s)\n`
-        this.ideas.forEach((idea) => {
-            console.log(idea)
-            //str += `${title} ${projectStatus[status]} - ${description}\n`
+        this.ideas.forEach(({title,description,status}) => {
+            str += `${title} (${status.description}) - ${description}\n`
         });
         return str
     }
@@ -60,6 +63,10 @@ console.log(idea.status)
 const emptyBoard = new ProjectIdeaBoard("Empty Board")
 console.log(emptyBoard.formatToString())
 const techProjects = new ProjectIdeaBoard("Tech Projects Board")
-techProjects.pin(("Smart Home System", "An integrated system to control lighting, temperature, and security devices remotely."))
+techProjects.pin(new ProjectIdea("Smart Home System", "An integrated system to control lighting, temperature, and security devices remotely."))
+techProjects.pin(idea)
+console.log(techProjects)
+console.log(techProjects.formatToString())
+techProjects.unpin(idea)
 console.log(techProjects)
 console.log(techProjects.formatToString())
