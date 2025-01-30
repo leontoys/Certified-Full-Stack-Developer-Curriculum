@@ -32,8 +32,8 @@ const isOrdered = (first, second) => (first <= second ? true : false);
 
 const swapElements = (arr = [], index) => {
   //console.log("arr",arr,"index",index)
-  first = arr[index];
-  second = arr[index + 1];
+  const first = arr[index];
+  const second = arr[index + 1];
   //console.log("first",first,"second",second)
   if (!isOrdered(first, second)) {
     //if is ordered returns false
@@ -54,6 +54,7 @@ const highlightCurrentEls = (element, index) => {
 let numbers = [];
 
 generateBtn.addEventListener("click", () => {
+  sortBtn.style.display = "block"
   numbers = generateArray();
   if (startingArray.children.length === 0) {
     fillArrContainer(startingArray, numbers);
@@ -63,13 +64,14 @@ generateBtn.addEventListener("click", () => {
     const children = Array.from(arrayContainer.children);
     for (let index = 1; index < children.length; index++) {
       const element = children[index];
-      console.log(element);
+      //console.log(element);
       arrayContainer.removeChild(element)
     }
   }
 });
 
 sortBtn.addEventListener("click", () => {
+  sortBtn.style.display = "none"
   let highlightIndex = 0;
   for (let outerIndex = 0; outerIndex < numbers.length - 1; outerIndex++) {
     //bubble sort - if the array passes through the whole set without swapping
@@ -77,17 +79,17 @@ sortBtn.addEventListener("click", () => {
     let swapped = false;
     //const element = array[outerIndex];
     for (let index = 0; index < numbers.length - 1; index++) {
-      /*             if(isOrdered(numbers[index],numbers[index+1])){
-                continue
-            } */
+      if(!isOrdered(numbers[index],numbers[index+1])){
+        swapped = true;
+      } 
       highlightCurrentEls(arrayContainer.children[highlightIndex], index);
       highlightIndex++;
       swapElements(numbers, index);
       //console.log("sorted",numbers)
       const newDiv = generateContainer();
-      console.log(fillArrContainer(newDiv, numbers));
+      //console.log(fillArrContainer(newDiv, numbers));
+      fillArrContainer(newDiv, numbers)
       arrayContainer.appendChild(newDiv);
-      swapped = true;
     }
     if (!swapped) {
       break;
