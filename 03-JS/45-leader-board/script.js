@@ -71,9 +71,10 @@ const forumCategory = (id)=>{
 
 const avatars = (posters,users)=>{
     //console.log("posters",posters)
-    //console.log("users",users)
+   // console.log("users",users)
     const images = []
     posters.forEach(poster => {
+    //console.log("poster",poster)
     const user = users.find(user=>user.id===poster.user_id)
     //console.log("user",user)
     const avatar_template = avatarUrl+user.avatar_template.replace("{size}",30)
@@ -87,13 +88,33 @@ const avatars = (posters,users)=>{
    return images.join("")
 }
 
-/* const today = new Date("2025-01-31")
-console.log("today",today)
-timeAgo(today)
-const yesterday = new Date("2025-01-30")
-console.log("someday",yesterday)
-timeAgo(yesterday)  */
-//console.log(viewCount(597))
-//console.log(viewCount(1000))
-//console.log(forumCategory(299))
-//console.log(forumCategory(200))  
+const showLatestPosts = (post)=>{
+    const postsContainer = document.getElementById("posts-container")
+    let str = ""
+    //console.log("post",post)
+    const {users,topic_list} = post
+    //console.log("users",users)
+    //console.log("topic_list",topic_list)
+    const topics = topic_list.topics
+    topics.forEach(({slug,title,category_id,id,posters,posts_count,views,bumped_at}) => {
+        //console.log("users",users)
+        str += `
+        <tr>
+            <td><a class="post-title" href="${forumTopicUrl}${slug}/${id}">${title}</a><a>${forumCategory(category_id)}</a></td>
+            <td><div class="avatar-container">${avatars(posters,users)}</div></td>
+            <td>${posts_count-1}</td>
+            <td>${viewCount(views)}</td>
+            <td>${timeAgo(bumped_at)}</td>
+        </tr>` 
+    });
+    //console.log("str",str)
+    postsContainer.innerHTML = str
+}
+
+const fetchData = async ()=>{
+    await fetch(forumLatest)
+            .then(res=>res.json)
+            .then(data=>showLatestPosts(data))
+            .catch(error=>console.error)
+}
+
