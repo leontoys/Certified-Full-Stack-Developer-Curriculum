@@ -165,11 +165,18 @@ const data = {
   
 
 const fetchData = async ()=>{
-    showLatestPosts(data)
-/*     await fetch(forumLatest)
+/*     showLatestPosts(data)
+     await fetch(forumLatest)
             .then(res=>res.json)
             .then(data=>showLatestPosts(data))
-            .catch(error=>console.log(error)) */
+            .catch(error=>console.error('Error:',error))  */
+  try {
+    let response = await fetch(forumLatest)
+    let data = await response.json()
+    showLatestPosts(data)
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 fetchData()

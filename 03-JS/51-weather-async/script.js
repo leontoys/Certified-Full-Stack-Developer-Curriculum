@@ -24,11 +24,16 @@ getForecast.addEventListener("click",()=>{
 
 //weather functions
 const getWeather = async (city) => {
-    return await fetch(`https://weather-proxy.freecodecamp.rocks/api/city/${city}`)
-    .then(res => res.json())
-    .then(data => data)
-    .catch(error => console.error(error))
-}
+    try{
+      let response = await fetch(`https://weather-proxy.freecodecamp.rocks/api/city/${city}`)
+      let data = response.json()
+      return data
+    }
+    catch(error){
+    console.error(error)
+    }
+  
+  }  
 
 const showWeather = async (city)=>{
     //console.log("show weather",city)
