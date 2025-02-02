@@ -5,19 +5,66 @@ const markdownIput = document.getElementById("markdown-input");
 const htmlOutput = document.getElementById("html-output");
 const preview = document.getElementById("preview");
 
-/**********************
+/***********************
+ * Function Definitions
+ **********************/
+const convertMarkdown = ()=>{
+  let input = markdownIput.value 
+
+  //replace h3
+  //g - multiple times match it
+  //m - multiple lines match it
+  //. - any character
+  //*- any number of preceeding character
+  //(.*$) - any character, any number of times, till the end
+  let html = input.replace(/^### (.*$)/gm,"<h3>$1</h3>")
+  //replace h2
+  html = html.replace(/^## (.*$)/gm,"<h2>$1</h2>")
+  //replace h1
+  html = html.replace(/^# (.*$)/gm,"<h1>$1</h1>")
+  //strong
+  //html = html.replace(/[*]{2}(.*)[*]{2}/gm,"<strong>$1</strong>")//greedy matching
+  html = html.replace(/\*\*(.*?)\*\*/gm,"<strong>$1</strong>")
+  //strong
+  html = html.replace(/__(.*?)__/gm,"<strong>$1</strong>")
+  //italics
+  html = html.replace(/\*(.*?)\*/gm,"<em>$1</em>")
+  //italics
+  html = html.replace(/_(.*?)_/gm,"<em>$1</em>")
+  //images
+  html = html.replace(/!\[(.*?)\]\((.*?)\)/gm,'<img alt="$1" src="$2">')
+  //anchor
+  html = html.replace(/\[(.*?)\]\((.*?)\)/gm,'<a href="$2">$1</a>')
+  //block quote
+  html = html.replace(/^> (.*$)/gm,'<blockquote>$1</blockquote>')
+
+  console.log("html",html)
+  return html
+}
+
+const updateOutput = ()=>{
+  //raw HTML
+  htmlOutput.textContent = convertMarkdown()
+  //preview
+  preview.innerHTML = convertMarkdown()
+}
+
+/***********************
  * Add Event Listeners
  **********************/
-markdownIput.addEventListener("input", () => {
+markdownIput.addEventListener("input",updateOutput)
+
+
+/* markdownIput.addEventListener("input", () => {
   const result = convertMarkdown();
   htmlOutput.innerText = result;
   preview.innerHTML = result;
-});
+}); */
 
 /***********************
  * Function Definitions
  **********************/
-const tags = {
+/* const tags = {
   "#" : "h1",
   "##" : "h2",
   "###" : "h3",
@@ -112,4 +159,4 @@ function convertMarkdown() {
     output = input;
   }
   return output;
-}
+} */
