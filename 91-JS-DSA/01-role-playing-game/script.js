@@ -18,43 +18,46 @@ const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const weapons = [
   {
-    name : "stick",
-    power : 5
+    name: "stick",
+    power: 5,
   },
   {
-    name : "dagger",
-    power : 30
+    name: "dagger",
+    power: 30,
   },
   {
-    name : "claw hammer",
-    power : 50
+    name: "claw hammer",
+    power: 50,
   },
   {
-    name : "sword",
-    power : 100
-  }      
-]
+    name: "sword",
+    power: 100,
+  },
+];
 const locations = [
-    {
-      name: "town square",
-      "button text": ["Go to store", "Go to cave", "Fight dragon"],
-      "button functions": [goStore, goCave, fightDragon],
-      text : "You are in the town square. You see a sign that says \"Store\"."
-    },
-    {
-        name: "store",
-        "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
-        "button functions": [buyHealth,buyWeapon,goTown],
-        text : "You enter the store."
-      },
-      {
-        name: "cave",
-        "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
-        "button functions": [fightSlime, fightBeast,goTown],
-        text : "You enter the cave. You see some monsters."
-      }      
-  ];
-
+  {
+    name: "town square",
+    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button functions": [goStore, goCave, fightDragon],
+    text: 'You are in the town square. You see a sign that says "Store".',
+  },
+  {
+    name: "store",
+    "button text": [
+      "Buy 10 health (10 gold)",
+      "Buy weapon (30 gold)",
+      "Go to town square",
+    ],
+    "button functions": [buyHealth, buyWeapon, goTown],
+    text: "You enter the store.",
+  },
+  {
+    name: "cave",
+    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
+    "button functions": [fightSlime, fightBeast, goTown],
+    text: "You enter the cave. You see some monsters.",
+  },
+];
 
 //initialize buttons
 button1.onclick = goStore;
@@ -68,45 +71,65 @@ function update(location) {
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
-  text.innerText = location.text
+  text.innerText = location.text;
 }
 
-function goTown(){
-  update(locations[0])
+function goTown() {
+  update(locations[0]);
 }
 
 function goStore() {
-  update(locations[1])
+  update(locations[1]);
 }
 
 function goCave() {
-  update(locations[2])
+  update(locations[2]);
 }
 
 function fightDragon() {
   button3.innerText = "Go to town square";
 }
 
-function buyHealth(){
-  if (gold>=10) {
-    gold -= 10
-    health += 10
-    goldText.innerText = gold 
-    healthText.innerText = health    
+function buyHealth() {
+  if (gold >= 10) {
+    gold -= 10;
+    health += 10;
+    goldText.innerText = gold;
+    healthText.innerText = health;
+  } else {
+    text.innerText = "You do not have enough gold to buy health.";
+  }
+}
+
+function buyWeapon() {
+  if (currentWeaponIndex < weapons.length-1) {
+    if (gold >= 30) {
+      gold -= 30; //compount assignment
+      currentWeaponIndex++; //increment operator
+      goldText.innerText = gold;
+      let newWeapon = weapons[currentWeaponIndex].name;
+      text.innerText = "You now have a " + newWeapon + ".";
+      inventory.push(newWeapon);
+      text.innerText += " In your inventory you have: " + inventory;
+    } else {
+      text.innerText = "You do not have enough gold to buy a weapon.";
+    }
   }
   else{
-    text.innerText = "You do not have enough gold to buy health."
+    text.innerText = "You already have the most powerful weapon!"
+    button2.innerText = "Sell weapon for 15 gold"
+    button2.onclick = sellWeapon
   }
 }
 
-function buyWeapon(){
-
+function sellWeapon(){
+  if (inventory.length>1) {
+    gold += 15
+    goldText.innerText = gold
+    let currentWeapon = inventory.shift()
+  }
 }
 
-function fightSlime(){
+function fightSlime() {}
 
-}
-
-function fightBeast(){
-
-}
+function fightBeast() {}
