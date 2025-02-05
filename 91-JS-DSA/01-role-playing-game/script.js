@@ -58,6 +58,23 @@ const locations = [
     text: "You enter the cave. You see some monsters.",
   },
 ];
+let monsters = [
+  {
+    name : "slime",
+    level : 2,
+    health : 15
+  },
+  {
+    name : "fanged beast",
+    level : 8,
+    health : 60
+  },
+  {
+    name : "dragon",
+    level : 20,
+    health : 300
+  }    
+]
 
 //initialize buttons
 button1.onclick = goStore;
@@ -84,10 +101,6 @@ function goStore() {
 
 function goCave() {
   update(locations[2]);
-}
-
-function fightDragon() {
-  button3.innerText = "Go to town square";
 }
 
 function buyHealth() {
@@ -127,9 +140,18 @@ function sellWeapon(){
     gold += 15
     goldText.innerText = gold
     let currentWeapon = inventory.shift()
+    text.innerText = "You sold a "+ currentWeapon +"."
+    text.innerText += " In your inventory you have: " + inventory
+  }
+  else{
+    text.innerText = "Don't sell your only weapon!"
   }
 }
 
 function fightSlime() {}
 
 function fightBeast() {}
+
+function fightDragon() {
+  button3.innerText = "Go to town square";
+}
