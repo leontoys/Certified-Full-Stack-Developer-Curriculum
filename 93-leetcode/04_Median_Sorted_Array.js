@@ -39,7 +39,7 @@
   return median
 }; */
 
-var findMedianSortedArrays = function (nums1, nums2) {
+/* var findMedianSortedArrays = function (nums1, nums2) {
     let sorted = []
     nums1.forEach(element => {
         sorted.push(Number(element))
@@ -57,6 +57,16 @@ var findMedianSortedArrays = function (nums1, nums2) {
         const middle = (sorted.length+1)/2
         return sorted[middle-1]
     }
+
+} */
+
+var findMedianSortedArrays = function (nums1, nums2) {
+  //merge array and sort
+  const sorted = nums1.concat(nums2).toSorted((a,b)=>a-b)
+
+  return sorted.length%2==0 //is the length even
+          ? (sorted[(sorted.length / 2)-1]+sorted[(sorted.length / 2)])/2 //if yes, average of middle values
+          : sorted[((sorted.length+1)/2)-1] //else, middle value
 
 }
 
