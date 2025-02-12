@@ -3,14 +3,83 @@
  * But it differs because it does it in-place without creating left and right arrays
  * Some important intermediate steps are partitioning - and swapping
  */
-function quickSort(array,low,high){
-  //base condition
-  if(low <= high){ //left crosses over to right
 
+function quickSort(array){
+  //base case 
+  if(array.length < 2){
+    return array
   }
   //recursion
+  let pivot = array[0] //first element
+  //loop through array and fill left and right
+  let left = []
+  let right = []
+
+  for(let i=1; i < array.length; i++ ){
+    if(array[i]<=pivot){
+      left.push(array[i])
+    }
+    else{
+      right.push(array[i])
+    }
+  }
+
+  return quickSort(left).concat(pivot).concat(quickSort(right))
 }
 
+/* Note - this didn't pass FCC test for some reason though it gives correct results
+function quickSort(array,left=0,right=array.length-1){
+  //base condition - ie, left crosses right
+  if(left >= right){
+    return
+}
+
+  //function - this will get the index
+  const partition = (array,left,right)=>{
+    //choose last element as pivot
+    let pivot = array[right]
+    //pointer for tracking boundary 
+    //this will be next pivot
+    let i = left - 1
+
+    //move from left -> right
+    for(j= left; j < right ; j++){
+      //if an element smaller than pivot is found
+      if(array[j] < pivot){
+        i++//increment 
+        //swap ith element which is larger or boundary with j
+        swap(array,i,j)
+      }
+      //if a[j] was larger, i will still be pointing
+      //to it infact to show the boundary
+    }  
+
+    //now i will be pointing to boundary
+    //so move pivot to here
+    swap(array,i+1,right)
+    return i+1 //return pivot
+
+  }  
+
+  //swap function
+  const swap = (array,i,j)=>{
+    let temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+
+  //recursion
+  let pivotIndex = partition(array,left,right)
+  quickSort(array,left,pivotIndex-1)
+  quickSort(array,pivotIndex+1,right)
+
+  return array
+
+} */
+
+
+
+console.log(quickSort([1,4,2,8,345,123,43,32,5643,63,123,43,2,55,1,234,92]))
 
 /*  Note - I didn't get it on day 1 
   function quickSort(array) {
