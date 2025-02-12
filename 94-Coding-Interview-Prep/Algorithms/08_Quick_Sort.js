@@ -1,4 +1,19 @@
-function quickSort(array) {
+/**
+ * This is similar to merge sort in the sense it is a divide and conquer
+ * But it differs because it does it in-place without creating left and right arrays
+ * Some important intermediate steps are partitioning - and swapping
+ */
+function quickSort(array,low,high){
+  //base condition
+  if(low <= high){ //left crosses over to right
+
+  }
+  //recursion
+}
+
+
+/*  Note - I didn't get it on day 1 
+  function quickSort(array) {
    console.log(array) 
   //create a swap function
   const swap = (items, left, right) => {
@@ -64,3 +79,4 @@ function quickSort(array) {
 }
 
 console.log(quickSort([9, 5, 2, 6, 1, 11, 3]));
+ */
