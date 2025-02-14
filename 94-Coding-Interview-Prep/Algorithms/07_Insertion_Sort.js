@@ -30,15 +30,14 @@
     for(let i= 1; i<array.length; i++){
         //inner loop - the sorted part - check current element against this
         //this loop will keep shifting to the rightside if required
-        let j= i-1
         let current = array[i]
-        for(; j>=0 && array[j] > current ; j--){
+        for(let j= i-1; j>=0 && array[j] > current ; j--){ //till we find an element that is greater than current
             //is the current element less than 
             //the element from the sorted side
-            //since we are shifting it will overwrite the outer loop element - current
+            //since keep shifting the elements
             array[j+1] = array[j]
         }
-        array[j+1] = current //if no shift was required, this will keep it at the same place
+        array[j+1] = current //slot the current element into correct place
     }
     return array;
     // Only change code above this line

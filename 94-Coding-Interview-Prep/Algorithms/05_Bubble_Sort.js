@@ -28,3 +28,13 @@ function bubbleSort(array) {
   }
 
   console.log(bubbleSort([1,4,2,8,345,123,43,32,5643,63,123,43,2,55,1,234,92]))
+
+
+  /**
+   * 1. Start outer loop from first element - till n times - loop counter i = 0
+   * 1.1. Start inner loop from first element till last element - i - because in each iteration one element gets sorted
+   * 1.1.1 compare this element with the next - a[j] > a[j+1]
+   * 1.1.2 if yes, then swap the elements - so that larger element becomes a[j+1]
+   * 1.1.3 if no, continue
+   * 1.1.4 increment j for next iteration
+   */
