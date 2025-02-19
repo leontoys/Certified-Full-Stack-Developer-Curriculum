@@ -16,13 +16,21 @@ var Map = function() {
         return this.collection[key]
     }
     this.values = () => {
-        return this.collection
+        return Object.values(this.collection)
     }
     this.size = () => {
-        return this.collection.length
+        return Object.entries(this.collection).length
     }
     this.clear = () => {
         this.collection = {}
     }
     // Only change code above this line
   };
+
+const a = new Map()
+a.add("a",1)
+a.add("b",2)
+a.add("c",3)
+console.log(a.values())  
+console.log(a.clear())
+console.log(a.values())
