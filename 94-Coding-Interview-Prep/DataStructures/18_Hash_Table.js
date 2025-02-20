@@ -28,7 +28,7 @@ var HashTable = function() {
     delete this.collection[key_hashed][key]
     //if the above delete removes everything against hashed key
     if(Object.keys(this.collection[key_hashed]).length===0){
-        
+        delete this.collection[key_hashed]
     }
   }
   // Only change code above this line
