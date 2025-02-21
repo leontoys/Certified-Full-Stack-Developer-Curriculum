@@ -50,7 +50,36 @@ function LinkedList() {
     };
   
     // Only change code below this line
-  
+    this.isEmpty = ()=>{
+      return length === 0 //if length is zero then it is empty right?
+    }
+
+    this.indexOf = (element) => {
+      let index = -1
+      let current = head
+      for( let i = 0; i < length; i++){
+        if(current.element === element){
+          index = i
+          break
+        }
+        current = current.next
+      }
+      return index
+    }
+
+    this.elementAt = (index)=>{
+      let element = undefined
+      let current = head
+      for(let i = 0; i < length; i++){
+        if(index === i){
+          element = current.element
+          break
+        }
+        current = current.next
+      }
+      return element
+    }
+
     // Only change code above this line
   }
 
@@ -62,7 +91,8 @@ list.add(10);
 list.add(20);
 list.add(30);
 list.add(40);
-list.remove(20)
+console.log(list.indexOf(10))
+console.log(list.elementAt(3))
 
 // Print the size of the list
 console.log("Size of list:", list.size()); // Should print: Size of list: 4
